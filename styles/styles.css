@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Comfortaa", sans-serif;
+  margin: 0;
+  background: #f3f6fd;
+}
+
+.header__container {
+  display: flex;
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  width: 151px;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 28px;
+  gap: 48px;
+  background: #fbfaff;
+}
+
+.header__logo-h1 {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+}
+
+.header__category-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.header__category-item {
+  border-radius: 14px;
+  width: 46px;
+  height: 45px;
+  box-shadow: 0 8px 14px 0 rgba(62, 107, 224, 0.12);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5051F9;
+}
+
+.header__category-icon {
+  color: #5051F9;
+}
+
+.active {
+  background: #5051f9;
+  color: white;
+}
+
+.main__container {
+  padding: 45px 41px 0 200px;
+}
+
+.main__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main__header-h2 {
+  font-weight: 400;
+  font-size: 30px;
+  margin: 0;
+}
