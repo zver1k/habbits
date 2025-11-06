@@ -18,55 +18,85 @@
   <title>Трекер привычек</title>
 </head>
 <body>
-<header class="header__container">
-  <div class="header__logo">
+<header class="panel__container">
+  <div class="panel__logo">
     <img
-      class="header__logo-img"
+      class="panel__logo-img"
       src="./images/logo.svg"
       alt="Логотип Трекера привычек"
     >
-    <h1 class="header__logo-h1">
+    <h1 class="panel__logo-h2">
       Трекер <br /> Привычек
     </h1>
   </div>
-  <div class="header__category-list">
-    <div class="header__category-item active">
+  <div class="panel__category-list">
+    <div class="panel__category-item">
+      <button
+        class="panel__category-button active"
+        type="button"
+      >
       <img
-        class="header__category-icon"
-        src="./images/sport.svg"
-        alt=""
-      />
+          class="panel__category-icon"
+          src="./images/sport.svg"
+          alt="Спорт"
+        />
+      </button>
     </div>
-    <div class="header__category-item">
+    <div class="panel__category-item">
+      <button
+        class="panel__category-button"
+        type="button"
+      >
       <img
-        class="header__category-icon"
-        src="./images/water.svg"
-        alt=""
-      />
+          class="panel__category-icon"
+          src="./images/water.svg"
+          alt="Вода"
+        />
+      </button>
     </div>
-    <div class="header__category-item">
+    <div class="panel__category-item">
+      <button
+        class="panel__category-button"
+        type="button"
+      >
       <img
-        class="header__category-icon"
-        src="./images/food.svg"
-        alt=""
-      />
+          class="panel__category-icon"
+          src="./images/food.svg"
+          alt="Еда"
+        />
+      </button>
     </div>
-    <div class="header__category-item">
+    <div class="panel__category-item add">
+      <button
+        class="panel__category-button"
+        type="button"
+      >
       <img
-        class="header__category-icon"
-        src="./images/add.svg"
-        alt=""
-      />
+          class="panel__category-icon"
+          src="./images/add.svg"
+          alt="Добавить привычку"
+        />
+      </button>
     </div>
   </div>
 </header>
 <main class="main__container">
   <div class="main__header">
-    <h2 class="main__header-h2">
+    <h2 class="main__header-h1">
       Отжимания
     </h2>
     <div class="main__progress">
-      Прогресс 80%
+      <div class="main__progress-text">
+        <div class="main__progress-name">
+          Прогресс
+        </div>
+        <div class="main__progress-percent">
+          80%
+        </div>
+      </div>
+      <div class="main__progress-bar">
+        <div class="main__progress-bar-fill"></div>
+      </div>
     </div>
   </div>
   <div class="main__content">
