@@ -1,12 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-
-* {
-  box-sizing: border-box;
-}
+@import url(normalize.css);
 
 body {
   font-family: "Comfortaa", sans-serif;
-  margin: 0;
   background: #f3f6fd;
 }
 
@@ -26,7 +22,6 @@ body {
 .header__logo-h1 {
   font-weight: 700;
   font-size: 18px;
-  margin: 0;
 }
 
 .header__category-list {
@@ -65,10 +60,87 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 36px;
 }
 
 .main__header-h2 {
   font-weight: 400;
   font-size: 30px;
   margin: 0;
+}
+
+.main__content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.main__content-item {
+  display: flex;
+  border: none;
+  border-radius: 10px;
+  height: 54px;
+  width: 100%;
+  background: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  align-items: center;
+}
+
+.content__day {
+  background: #fbfaff;
+  width: 129px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.content__text {
+  border: 1px solid #e7ebfb;
+  border-radius: 9px;
+  width: 100%;
+  height: 39px;
+}
+
+.content__title {
+  padding-left: 24px;
+  display: flex;
+  gap: 14px;
+  width: 100%;
+}
+
+.content__text::placeholder {
+  padding-left: 48px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #8899a8;
+}
+
+.content__button {
+  border-radius: 9px;
+  border: none;
+  width: 120px;
+  height: 39px;
+  background: #edecfe;
+  font-weight: 500;
+  font-size: 13px;
+  color: #5051f9;
+  margin-right: 5px;
+}
+
+.content__icon {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 9px;
+  z-index: 1;
+}
+
+.content__delete {
+  position: absolute;
+  right: 54px;
+  z-index: 1;
 }
