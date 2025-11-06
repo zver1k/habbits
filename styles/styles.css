@@ -18,11 +18,12 @@ body {
   background: #fbfaff;
 }
 
-.panel__logo-h1 {
+.panel__logo-h2 {
   font-weight: 700;
   font-size: 18px;
 }
 
+.panel__category,
 .panel__category-list {
   display: flex;
   flex-direction: column;
@@ -57,7 +58,10 @@ body {
 
 .active {
   background: #5051f9;
-  color: white;
+}
+
+.active img {
+  filter: brightness(0) invert(1);
 }
 
 .add {
@@ -78,10 +82,44 @@ body {
   margin-bottom: 36px;
 }
 
-.main__header-h2 {
+.main__header-h1 {
   font-weight: 400;
   font-size: 30px;
   margin: 0;
+}
+
+.main__progress-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  width: 235px;
+}
+
+.main__progress-name {
+  font-weight: 400;
+  font-size: 14px;
+  color: #232360;
+}
+
+.main__progress-percent {
+font-weight: 400;
+font-size: 12px;
+color: #768396;
+}
+
+.main__progress-bar {
+  width: 100%;
+  border-radius: 4px;
+  height: 5px;
+  background: #E6E9ED;
+}
+
+.main__progress-bar-fill {
+  border-radius: 4px;
+  width: 80%;
+  height: 5px;
+  background: #5051f9;
 }
 
 .main__content-list {
