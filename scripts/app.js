@@ -12,8 +12,8 @@ const page = {
     progressFillBar: document.querySelector('.main__progress-bar-fill')
   },
   content: {
-    day: document.querySelector('.content__day'),
-    title: document.querySelector('.content__title'),
+    daysContainer: document.querySelector('.main__content-list'),
+    nextDay: document.querySelector('.content__day'),
   }
 }
 
@@ -66,8 +66,22 @@ function rerenderHead(activeHabbit) {
 }
 
 function rerenderContent(activeHabbit) {
-  page.content.title.innerText = activeHabbit.days;
-  console.log(activeHabbit.days)
+  page.content.daysContainer.innerHTML = '';
+  for (const index in activeHabbit.days) {
+    const element = document.createElement('div')
+    element.classList.add('main__content-item');
+    element.innerHTML = `<div class="main__content-item">
+      <div class="content__day">День ${Number(index) + 1}</div>
+      <div class="content__title">${activeHabbit.days[index].comment}</div>
+      <img
+        class="content__delete"
+        src="./images/delete.svg"
+        alt="Удалить день ${Number(index) + 1}"
+      >
+    </div>`;
+    page.content.daysContainer.appendChild(element);
+  }
+  page.content.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`
 }
 
 function rerender(activeHabbitId) {

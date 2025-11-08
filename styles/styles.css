@@ -122,6 +122,7 @@ color: #768396;
   background: #5051f9;
 }
 
+.main__content,
 .main__content-list {
   display: flex;
   flex-direction: column;
@@ -167,10 +168,13 @@ color: #768396;
 }
 
 .content__text::placeholder {
-  padding-left: 48px;
   font-weight: 400;
   font-size: 14px;
   color: #8899a8;
+}
+
+input {
+  padding-left: 48px;
 }
 
 .content__button {
