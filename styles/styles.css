@@ -117,7 +117,7 @@ color: #768396;
 
 .main__progress-bar-fill {
   border-radius: 4px;
-  width: 80%;
+  transition: all 0.5s;
   height: 5px;
   background: #5051f9;
 }

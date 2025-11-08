@@ -6,6 +6,15 @@ const HABBIT_KEY = 'HABBIT_KEY';
 /* page */
 const page = {
   menu: document.querySelector('.panel__category-list'),
+  header: {
+    h1: document.querySelector('.main__header-h1'),
+    progressPercent: document.querySelector('.main__progress-percent'),
+    progressFillBar: document.querySelector('.main__progress-bar-fill')
+  },
+  content: {
+    day: document.querySelector('.content__day'),
+    title: document.querySelector('.content__title'),
+  }
 }
 
 // utils
@@ -24,11 +33,7 @@ function saveData() {
 
 // render
 
-
 function rerenderMenu(activeHabbit) {
-  if (!activeHabbit) {
-    return;
-  }
   for (const habbit of habbits) {
     const existed = document.querySelector(`[menu-habbit-id="${habbit.id}"]`);
     if (!existed) {
@@ -51,9 +56,28 @@ function rerenderMenu(activeHabbit) {
   }
 }
 
+function rerenderHead(activeHabbit) {
+  page.header.h1.innerText = activeHabbit.name;
+  const progress = activeHabbit.days.length / activeHabbit.target > 1
+    ? 100
+    : activeHabbit.days.length / activeHabbit.target * 100
+  page.header.progressPercent.innerText = progress.toFixed(0) + '%';
+  page.header.progressFillBar.setAttribute(`style`, `width: ${progress}%`)
+}
+
+function rerenderContent(activeHabbit) {
+  page.content.title.innerText = activeHabbit.days;
+  console.log(activeHabbit.days)
+}
+
 function rerender(activeHabbitId) {
   const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
+  if (!activeHabbit) {
+    return;
+  }
   rerenderMenu(activeHabbit);
+  rerenderHead(activeHabbit);
+  rerenderContent(activeHabbit);
 }
 
 /* init */
