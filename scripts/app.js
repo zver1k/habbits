@@ -2,6 +2,7 @@
 
 let habbits = [];
 const HABBIT_KEY = 'HABBIT_KEY';
+let globalActiveHabbitId;
 
 /* page */
 const page = {
@@ -73,11 +74,16 @@ function rerenderContent(activeHabbit) {
     element.innerHTML = `<div class="main__content-item">
       <div class="content__day">День ${Number(index) + 1}</div>
       <div class="content__title">${activeHabbit.days[index].comment}</div>
-      <img
-        class="content__delete"
+      <button 
+      onclick="deleteDay(${index})"
+      class="content__delete" 
+      type="submit"
+      >
+        <img
         src="./images/delete.svg"
         alt="Удалить день ${Number(index) + 1}"
-      >
+        >
+      </button>
     </div>`;
     page.content.daysContainer.appendChild(element);
   }
@@ -85,6 +91,7 @@ function rerenderContent(activeHabbit) {
 }
 
 function rerender(activeHabbitId) {
+  globalActiveHabbitId = activeHabbitId;
   const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
   if (!activeHabbit) {
     return;
@@ -92,6 +99,46 @@ function rerender(activeHabbitId) {
   rerenderMenu(activeHabbit);
   rerenderHead(activeHabbit);
   rerenderContent(activeHabbit);
+}
+
+/* work with days*/
+function addDays(event) {
+  const form = event.target;
+  event.preventDefault();
+  const data = new FormData(form);
+  const comment = data.get('comment');
+  form['comment'].classList.remove('error');
+  if (!comment) {
+    form['comment'].classList.add('error');
+  }
+  habbits = habbits.map(habbit => {
+    if (habbit.id === globalActiveHabbitId) {
+      return {
+        ...habbit,
+        days: habbit.days.concat([{ comment }])
+      }
+    }
+    return habbit;
+  });
+  saveData()
+  form['comment'].value = '';
+  rerender(globalActiveHabbitId);
+}
+
+/* delete work */
+function deleteDay(index) {
+  habbits = habbits.map(habbit => {
+    if (habbit.id === globalActiveHabbitId) {
+      habbit.days.splice(index, 1);
+      return {
+        ...habbit,
+        days: habbit.days
+      }
+    }
+    return habbit;
+  })
+  rerender(globalActiveHabbitId);
+  saveData()
 }
 
 /* init */
