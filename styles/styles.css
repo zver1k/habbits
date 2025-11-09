@@ -177,6 +177,10 @@ input {
   padding-left: 48px;
 }
 
+input.error {
+  border: 1px solid #dc3545;
+}
+
 .content__button {
   border-radius: 9px;
   border: none;
@@ -197,8 +201,9 @@ input {
 }
 
 .content__delete {
-  position: absolute;
-  right: 54px;
-  z-index: 1;
-  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  margin-right: 12px;
 }
