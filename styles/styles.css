@@ -227,7 +227,7 @@ input.error {
 }
 
 .cover__hidden {
-
+  display: none;
 }
 
 .popup {
@@ -241,6 +241,7 @@ input.error {
   width: 424px;
   padding: 20px;
   position: relative;
+  z-index: 1;
 }
 
 .cover__h2 {

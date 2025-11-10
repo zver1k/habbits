@@ -32,6 +32,15 @@ function saveData() {
   localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits));
 }
 
+function tooglePopup() {
+  const popup = document.querySelector('.cover');
+  if (popup.classList.contains('cover__hidden')) {
+    popup.classList.remove('cover__hidden');
+  } else {
+    popup.classList.add('cover__hidden');
+  }
+}
+
 // render
 
 function rerenderMenu(activeHabbit) {
@@ -140,6 +149,15 @@ function deleteDay(index) {
   rerender(globalActiveHabbitId);
   saveData()
 }
+
+/* work icons */
+function setIcon(context, icon) {
+  document.querySelector('.cover__field input[name="icon"]')
+  const activeIcon = document.querySelector('.active')
+  activeIcon.classList.remove('active')
+  context.classList.add('active');
+}
+
 
 /* init */
 (() => {
