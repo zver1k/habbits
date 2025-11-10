@@ -32,7 +32,7 @@
   <nav class="panel__category">
     <div class="panel__category-list"></div>
     <button
-      onclick="tooglePopup()"
+      onclick="togglePopup()"
       class="panel__category-button"
       type="button"
     >
@@ -91,34 +91,35 @@
         </form>
       </div>
   </div>
-  <div class="cover cover__hidden">
+  <div class="cover cover__hidden" id="add-habbit-popup">
     <div class="popup">
       <h2 class="cover__h2">Новая привычка</h2>
       <h3 class="cover__h3">Иконка</h3>
-      <div class="cover__list">
-        <button class="panel__category-button active" onclick="setIcon(this, 'food')">
-          <img class="panel__category-icon" src="./images/food.svg" alt=""/>
+      <div class="icon-select">
+        <button class="icon icon_active" onclick="setIcon(this, 'food')">
+        <img src="./images/food.svg" alt="Еда"/>
         </button>
-        <button class="panel__category-button" onclick="setIcon(this, 'sport')">
-          <img class="panel__category-icon" src="./images/sport.svg" alt="${habbit.name}"/>
+        <button class="icon" onclick="setIcon(this, 'sport')">
+          <img src="./images/sport.svg" alt="Спорт"/>
         </button>
-        <button class="panel__category-button" onclick="setIcon(this, 'water')">
-          <img class="panel__category-icon" src="./images/water.svg" alt="${habbit.name}"/>
+        <button class="icon" onclick="setIcon(this, 'water')">
+          <img src="./images/water.svg" alt="Вода"/>
         </button>
       </div>
-      <div class="cover__field">
-        <input class="field__input" type="text" placeholder="Название">
-        <input class="field__input" name="icon" hidden placeholder="Иконка" value="food">
-        <input class="field__input" type="number" placeholder="Цель">
-      </div>
+      <form class="cover__field" onsubmit="addHabbit(event)">
+        <input type="text" name="name" placeholder="Название">
+        <input name="icon" hidden placeholder="Иконка" value="food">
+        <input type="number" name="target" placeholder="Цель">
+
       <button
         class="cover__button"
-        type="button"
+        type="submit"
       >
         Добавить
       </button>
+      </form>
       <button
-        onclick="tooglePopup()"
+        onclick="togglePopup()"
         class="cover__close"
         type="button"
       >
