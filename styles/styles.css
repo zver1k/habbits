@@ -207,3 +207,35 @@ input.error {
   display: flex;
   margin-right: 12px;
 }
+
+@media (max-width: 600px) {
+  .main__header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+  .panel__logo-h2 {
+    font-size: 14px;
+  }
+  .content__title {
+    gap: 2px;
+    padding-left: 6px;
+  }
+  input {
+    padding-left: 6px;
+    font-size: 12px;
+  }
+  .content__icon {
+    display: none;
+  }
+  .content__day {
+    width: 100px;
+  }
+  .main__container {
+    padding: 0;
+  }
+  .panel__container {
+    width: auto;
+  }
+}
