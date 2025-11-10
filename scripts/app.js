@@ -144,7 +144,7 @@ function rerender(activeHabbitId) {
 }
 
 /* work with days*/
-function addDays(event) {
+function addDay(event) {
   event.preventDefault();
   const data = validateAndGetFormData(event.target, ['comment']);
   if (!data) {
@@ -176,8 +176,9 @@ function deleteDay(index) {
     }
     return habbit;
   })
+  saveData();
+  toggleEmptyState();
   rerender(globalActiveHabbitId);
-  saveData()
 }
 
 /* work icons */
@@ -205,18 +206,28 @@ function addHabbit(event) {
   resetForm(event.target, ['name', 'target']);
   togglePopup();
   saveData();
+  toggleEmptyState();
   rerender(maxId + 1);
 }
 
+function toggleEmptyState() {
+  const contentItem = document.querySelector('.main__content-item');
+  const progress = document.querySelector('.main__progress');
+
+  if (habbits.length === 0) {
+    contentItem.style.display = 'none';
+    progress.style.display = 'none';
+  } else {
+    contentItem.style.display = '';
+    progress.style.display = '';
+  }
+}
 
 /* init */
 (() => {
   loadData();
+  toggleEmptyState();
   const hashId = Number(document.location.hash.replace('#', ''));
   const urlHabbit = habbits.find(habbit => habbit.id === hashId);
-  if (urlHabbit) {
-    rerender(urlHabbit.id)
-  } else {
-    rerender(habbits[0].id);
-  }
+  rerender(urlHabbit ? urlHabbit.id : habbits[0]?.id);
 })();

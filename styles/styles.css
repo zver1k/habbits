@@ -316,6 +316,10 @@ input.error {
   width: 100%;
 }
 
+.cover__field input {
+  width: 100%;
+}
+
 .icon-select {
   display: flex;
   gap: 25px;
