@@ -150,6 +150,17 @@ color: #768396;
   gap: 12px;
 }
 
+.main__header-delete {
+  border-radius: 9px;
+  border: none;
+  height: 39px;
+  background: #edecfe;
+  font-weight: 500;
+  font-size: 13px;
+  color: #5051f9;
+  margin-right: 5px;
+}
+
 .main__content-item {
   display: flex;
   border: none;
@@ -350,6 +361,7 @@ input.error {
 @media (max-width: 500px) {
   .panel__logo-h2 {
     font-size: 14px;
+    padding: 0 5px;
   }
 
   .main__header-h1 {

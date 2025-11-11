@@ -9,6 +9,7 @@ const page = {
   menu: document.querySelector('.panel__category-list'),
   header: {
     h1: document.querySelector('.main__header-h1'),
+    deleteHabbit: document.querySelector('.main__header-delete'),
     progressPercent: document.querySelector('.main__progress-percent'),
     progressFillBar: document.querySelector('.main__progress-bar-fill')
   },
@@ -76,25 +77,18 @@ function validateAndGetFormData(form, fields) {
 // render
 
 function rerenderMenu(activeHabbit) {
+  page.menu.innerHTML = ''; // Очищаем список
+
   for (const habbit of habbits) {
-    const existed = document.querySelector(`[menu-habbit-id="${habbit.id}"]`);
-    if (!existed) {
-      const element = document.createElement('button');
-      element.setAttribute('menu-habbit-id', habbit.id);
-      element.classList.add('panel__category-button');
-      element.addEventListener('click', () => rerender(habbit.id));
-      element.innerHTML = `<img class="panel__category-icon" src="./images/${habbit.icon}.svg" alt="${habbit.name}"/>`;
-      if (activeHabbit.id === habbit.id) {
-        element.classList.add('active');
-      }
-      page.menu.appendChild(element);
-      continue;
-    }
+    const element = document.createElement('button');
+    element.setAttribute('menu-habbit-id', habbit.id);
+    element.classList.add('panel__category-button');
+    element.addEventListener('click', () => rerender(habbit.id));
+    element.innerHTML = `<img class="panel__category-icon" src="./images/${habbit.icon}.svg" alt="${habbit.name}"/>`;
     if (activeHabbit.id === habbit.id) {
-      existed.classList.add('active');
-    } else {
-      existed.classList.remove('active');
+      element.classList.add('active');
     }
+    page.menu.appendChild(element);
   }
 }
 
@@ -133,11 +127,18 @@ function rerenderContent(activeHabbit) {
 
 function rerender(activeHabbitId) {
   globalActiveHabbitId = activeHabbitId;
-  const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
+
+  let activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
+
+  if (!activeHabbit && habbits.length > 0) {
+    activeHabbit = habbits[0];
+    globalActiveHabbitId = activeHabbit.id;
+  }
   if (!activeHabbit) {
+    rerenderMenu({ id: null }); // почистить меню
     return;
   }
-  document.location.replace(document.location.pathname + '#' + activeHabbitId);
+  document.location.replace(document.location.pathname + '#' + activeHabbit.id);
   rerenderMenu(activeHabbit);
   rerenderHead(activeHabbit);
   rerenderContent(activeHabbit);
@@ -210,16 +211,34 @@ function addHabbit(event) {
   rerender(maxId + 1);
 }
 
-function toggleEmptyState() {
-  const contentItem = document.querySelector('.main__content-item');
-  const progress = document.querySelector('.main__progress');
+/* delete work */
+function deleteHabbit(id) {
+  habbits = habbits.filter(habbit => habbit.id !== id);
+  saveData();
 
-  if (habbits.length === 0) {
-    contentItem.style.display = 'none';
-    progress.style.display = 'none';
+  if (habbits.length > 0) {
+    globalActiveHabbitId = habbits[0].id;
   } else {
-    contentItem.style.display = '';
+    globalActiveHabbitId = null;
+  }
+
+  rerender(globalActiveHabbitId);
+  toggleEmptyState();
+}
+
+function toggleEmptyState() {
+  const progress = document.querySelector('.main__progress');
+  const deleteButton = document.querySelector('.main__header-delete');
+  const contentItem = document.querySelector('.main__content-item');
+  if (habbits.length === 0) {
+    page.content.daysContainer.innerHTML = '';
+    progress.style.display = 'none';
+    deleteButton.style.display = 'none';
+    contentItem.style.display = 'none';
+  } else {
     progress.style.display = '';
+    deleteButton.style.display = '';
+    contentItem.style.display = '';
   }
 }
 
