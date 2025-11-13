@@ -84,6 +84,10 @@ body {
   filter: brightness(0) invert(1);
 }
 
+.active {
+  background: #5051F9;
+  color: white;
+}
 
 .add {
   background: none;
