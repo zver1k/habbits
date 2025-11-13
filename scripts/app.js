@@ -234,11 +234,15 @@ function toggleEmptyState() {
     page.content.daysContainer.innerHTML = '';
     progress.style.display = 'none';
     deleteButton.style.display = 'none';
-    contentItem.style.display = 'none';
+    if (contentItem) {
+      contentItem.style.display = 'none';
+    }
   } else {
     progress.style.display = '';
     deleteButton.style.display = '';
-    contentItem.style.display = '';
+    if (contentItem) {
+      contentItem.style.display = '';
+    }
   }
 }
 
